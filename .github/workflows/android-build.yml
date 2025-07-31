@@ -20,7 +20,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      BUILD_DIR: skia/out/build
+      ENV_PLATFORM: ${{ matrix.platform }}
+      ENV_BUILD_TYPE: ${{ matrix.build_type }}
+      ENV_LIBRARY_TYPE: ${{ matrix.library_type }}
+      ENV_ARCHITECTURE: ${{ matrix.architecture }}
+      ENV_BUILD_DIR: skia/out/build
 
     name: ${{ matrix.platform }}-${{ matrix.build_type }}-${{ matrix.library_type }}-${{ matrix.architecture }}
     steps:
@@ -60,23 +64,23 @@ jobs:
 
       - name: Clean build output
         shell: bash
-        run: rm -rf "$BUILD_DIR"
+        run: rm -rf "$ENV_BUILD_DIR"
 
       - name: Build Skia ${{ matrix.platform }}-${{ matrix.build_type }}-${{ matrix.library_type }}-${{ matrix.architecture }}
         shell: bash
         run: |
           chmod +x ./scripts/build-skia.sh
-          ./scripts/build-skia.sh "${{ matrix.platform }}" "${{ matrix.build_type }}" "${{ matrix.library_type }}" "${{ matrix.architecture }}"
+          ./scripts/build-skia.sh
 
       - name: Zip built binaries
         shell: bash
         run: |
           zip_name="skia-${{ matrix.platform }}-${{ matrix.build_type }}-${{ matrix.library_type }}-${{ matrix.architecture }}.zip"
-          if [ -d "$BUILD_DIR" ]; then
-            echo "Zipping contents of $BUILD_DIR into $zip_name"
-            zip -r "$zip_name" "$BUILD_DIR"
+          if [ -d "$ENV_BUILD_DIR" ]; then
+            echo "Zipping contents of $ENV_BUILD_DIR into $zip_name"
+            zip -r "$zip_name" "$ENV_BUILD_DIR"
           else
-            echo "❌ Directory $BUILD_DIR does not exist. Skipping zip."
+            echo "❌ Directory $ENV_BUILD_DIR does not exist. Skipping zip."
             exit 1
           fi
 
