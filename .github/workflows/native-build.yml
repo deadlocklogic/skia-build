@@ -1,4 +1,4 @@
-name: Skia Build Matrix
+name: Skia Native Build Matrix
 
 on:
   push:
@@ -27,10 +27,10 @@ jobs:
     name: ${{ matrix.platform }}-${{ matrix.build_type }}-${{ matrix.library_type }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache depot_tools
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/depot_tools
           key: depot_tools-${{ matrix.platform }}-${{ hashFiles('scripts/install-deps-*') }}
@@ -94,10 +94,10 @@ jobs:
     # if: startsWith(github.ref, 'refs/tags/')
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Download all build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
