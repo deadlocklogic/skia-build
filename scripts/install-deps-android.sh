@@ -31,7 +31,7 @@ export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
 
 # Accept licenses and install required SDK components
-yes | sdkmanager --licenses
+yes | sdkmanager --licenses > /dev/null 2>&1 || true
 sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3" "ndk;23.1.7779620"
 
 echo "Android dependencies installed."
