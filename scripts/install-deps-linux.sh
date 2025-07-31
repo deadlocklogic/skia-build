@@ -13,7 +13,7 @@ sudo apt-get install -y \
     cmake \
     curl \
     git \
-    libfontconfig1 \
+    libfontconfig1-dev \
     libfreetype6-dev \
     libx11-dev \
     libxext-dev \
