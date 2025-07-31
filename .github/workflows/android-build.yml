@@ -2,9 +2,8 @@ name: Skia Android Build Matrix
 
 on:
   push:
-    branches: [main]
-    paths:
-      - ".github/workflows/android-build.yml"
+    tags:
+      - "v*"
   workflow_dispatch:
 
 jobs:

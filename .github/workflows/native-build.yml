@@ -2,9 +2,8 @@ name: Skia Native Build Matrix
 
 on:
   push:
-    branches: [main]
-    paths:
-      - ".github/workflows/native-build.yml"
+    tags:
+      - "v*"
   workflow_dispatch:
 
 jobs:
