@@ -19,6 +19,24 @@ cd skia
 echo "Syncing Skia dependencies..."
 python3 tools/git-sync-deps
 
+case "$PLATFORM" in
+  windows)
+    SKIA_TARGET=""
+    ;;
+  linux)
+    SKIA_TARGET=""
+    ;;
+  android)
+    SKIA_TARGET="ndk=\"$ANDROID_NDK_ROOT\""
+    SKIA_TARGET+="target_os=\"android\""
+    SKIA_TARGET+="target_cpu=\"arm64\""
+    ;;
+  *)
+    echo "Unsupported platform: $PLATFORM"
+    exit 1
+    ;;
+esac
+
 # Build Type
 if [[ "${BUILD_TYPE,,}" == "debug" ]]; then
   SKIA_IS_DEBUG="is_debug=true"
@@ -54,7 +72,7 @@ case "$PLATFORM" in
 esac
 
 echo "Generating build files in ../$BUILD_DIR..."
-bin/gn gen ../"$BUILD_DIR" --args="$SKIA_IS_DEBUG $SKIA_IS_COMPONENT_BULD $PLATFORM_ARGS"
+bin/gn gen ../"$BUILD_DIR" --args="$SKIA_TARGET $SKIA_IS_DEBUG $SKIA_IS_COMPONENT_BULD $PLATFORM_ARGS"
 
 echo "Starting build with ninja..."
 ninja -C ../"$BUILD_DIR"
