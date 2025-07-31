@@ -3,6 +3,8 @@ name: Skia Build Matrix
 on:
   push:
     branches: [main]
+    paths:
+      - ".github/workflows/native-build.yml"
   workflow_dispatch:
 
 jobs:
@@ -10,75 +12,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - platform: linux
-            os_runner: ubuntu-latest
-            build_type: debug
-            library_type: static
-          - platform: linux
-            os_runner: ubuntu-latest
-            build_type: debug
-            library_type: dynamic
-          - platform: linux
-            os_runner: ubuntu-latest
-            build_type: release
-            library_type: static
-          - platform: linux
-            os_runner: ubuntu-latest
-            build_type: release
-            library_type: dynamic
+        platform: [windows, linux]
+        build_type: [release, debug]
+        library_type: [static, dynamic]
 
-          - platform: android
-            os_runner: ubuntu-latest
-            build_type: debug
-            library_type: static
-          - platform: android
-            os_runner: ubuntu-latest
-            build_type: debug
-            library_type: dynamic
-          - platform: android
-            os_runner: ubuntu-latest
-            build_type: release
-            library_type: static
-          - platform: android
-            os_runner: ubuntu-latest
-            build_type: release
-            library_type: dynamic
-
-          - platform: windows
-            os_runner: windows-latest
-            build_type: debug
-            library_type: static
-          - platform: windows
-            os_runner: windows-latest
-            build_type: debug
-            library_type: dynamic
-          - platform: windows
-            os_runner: windows-latest
-            build_type: release
-            library_type: static
-          - platform: windows
-            os_runner: windows-latest
-            build_type: release
-            library_type: dynamic
-
-        # - platform: linux
-        #   os_runner: ubuntu-latest
-        # - platform: windows
-        #   os_runner: windows-latest
-        # - platform: android
-        #   os_runner: ubuntu-latest
-        #   build_type: [release, debug]
-        #   library_type: [static, dynamic]
-
-    runs-on: ${{ matrix.os_runner }}
+    runs-on: ${{
+      matrix.platform == 'windows' && 'windows-latest' ||
+      matrix.platform == 'linux' && 'ubuntu-latest' ||
+      matrix.platform == 'macos' && 'macos-latest' }}
 
     env:
-      SKIA_PLATFORM: ${{ matrix.platform }}
-      BUILD_TYPE: ${{ matrix.build_type }}
-      LIBRARY_TYPE: ${{ matrix.library_type }}
       BUILD_DIR: skia/out/build
 
+    name: ${{ matrix.platform }}-${{ matrix.build_type }}-${{ matrix.library_type }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

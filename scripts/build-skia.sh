@@ -4,6 +4,7 @@ set -euo pipefail
 PLATFORM=$1
 BUILD_TYPE=$2
 LIBRARY_TYPE=$3
+ARCHITECTURE=$4
 
 # Ensure we're running from repo root
 cd "$(dirname "$0")/.."
@@ -29,7 +30,7 @@ case "$PLATFORM" in
   android)
     SKIA_TARGET="ndk=\"$ANDROID_NDK_ROOT\""
     SKIA_TARGET+="target_os=\"android\""
-    SKIA_TARGET+="target_cpu=\"arm64\""
+    SKIA_TARGET+="target_cpu=\"$ARCHITECTURE\""
     ;;
   *)
     echo "Unsupported platform: $PLATFORM"
