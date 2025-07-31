@@ -53,10 +53,10 @@ case "$PLATFORM" in
     ;;
 esac
 
-echo "Generating build files in $BUILD_DIR..."
-bin/gn gen "$BUILD_DIR" --args="$SKIA_IS_DEBUG $SKIA_IS_COMPONENT_BULD $PLATFORM_ARGS"
+echo "Generating build files in ../$BUILD_DIR..."
+bin/gn gen ../"$BUILD_DIR" --args="$SKIA_IS_DEBUG $SKIA_IS_COMPONENT_BULD $PLATFORM_ARGS"
 
 echo "Starting build with ninja..."
-ninja -C "$BUILD_DIR"
+ninja -C ../"$BUILD_DIR"
 
 echo "Build completed successfully."
