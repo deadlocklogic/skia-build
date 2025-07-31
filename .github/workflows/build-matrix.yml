@@ -13,12 +13,63 @@ jobs:
         include:
           - platform: linux
             os_runner: ubuntu-latest
-          - platform: windows
-            os_runner: windows-latest
+            build_type: debug
+            library_type: static
+          - platform: linux
+            os_runner: ubuntu-latest
+            build_type: debug
+            library_type: dynamic
+          - platform: linux
+            os_runner: ubuntu-latest
+            build_type: release
+            library_type: static
+          - platform: linux
+            os_runner: ubuntu-latest
+            build_type: release
+            library_type: dynamic
+
           - platform: android
             os_runner: ubuntu-latest
-        build_type: [release, debug]
-        library_type: [static, dynamic]
+            build_type: debug
+            library_type: static
+          - platform: android
+            os_runner: ubuntu-latest
+            build_type: debug
+            library_type: dynamic
+          - platform: android
+            os_runner: ubuntu-latest
+            build_type: release
+            library_type: static
+          - platform: android
+            os_runner: ubuntu-latest
+            build_type: release
+            library_type: dynamic
+
+          - platform: windows
+            os_runner: windows-latest
+            build_type: debug
+            library_type: static
+          - platform: windows
+            os_runner: windows-latest
+            build_type: debug
+            library_type: dynamic
+          - platform: windows
+            os_runner: windows-latest
+            build_type: release
+            library_type: static
+          - platform: windows
+            os_runner: windows-latest
+            build_type: release
+            library_type: dynamic
+
+        # - platform: linux
+        #   os_runner: ubuntu-latest
+        # - platform: windows
+        #   os_runner: windows-latest
+        # - platform: android
+        #   os_runner: ubuntu-latest
+        #   build_type: [release, debug]
+        #   library_type: [static, dynamic]
 
     runs-on: ${{ matrix.os_runner }}
 
