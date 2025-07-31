@@ -128,7 +128,13 @@ jobs:
         shell: bash
         run: |
           zip_name="skia-${{ matrix.platform }}-${{ matrix.build_type }}-${{ matrix.library_type }}.zip"
-          zip -r "$zip_name" "$BUILD_DIR"
+          if [ -d "$BUILD_DIR" ]; then
+            echo "Zipping contents of $BUILD_DIR into $zip_name"
+            zip -r "$zip_name" "$BUILD_DIR"
+          else
+            echo "❌ Directory $BUILD_DIR does not exist. Skipping zip."
+            exit 1
+          fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
