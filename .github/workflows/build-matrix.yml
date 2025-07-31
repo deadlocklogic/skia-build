@@ -41,7 +41,9 @@ jobs:
       - name: Install dependencies for ${{ matrix.platform }}
         if: matrix.platform != 'windows'
         shell: bash
-        run: ./scripts/install-deps-${{ matrix.platform }}.sh
+        run: |
+          chmod +x ./scripts/install-deps-${{ matrix.platform }}.sh
+          ./scripts/install-deps-${{ matrix.platform }}.sh
 
       - name: Install dependencies for ${{ matrix.platform }}
         if: matrix.platform == 'windows'
@@ -64,7 +66,9 @@ jobs:
         run: rm -rf "$BUILD_DIR"
 
       - name: Build Skia ${{ matrix.platform }}-${{ matrix.build_type }}-${{ matrix.library_type }}
-        run: ./scripts/build-skia.sh "${{ matrix.platform }}" "${{ matrix.build_type }}" "${{ matrix.library_type }}"
+        run: |
+          chmod +x ./scripts/build-skia.sh
+          ./scripts/build-skia.sh "${{ matrix.platform }}" "${{ matrix.build_type }}" "${{ matrix.library_type }}"
 
       - name: Zip built binaries
         run: |
