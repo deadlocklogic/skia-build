@@ -15,6 +15,8 @@ sudo apt-get install -y \
     git \
     libfontconfig1-dev \
     libfreetype6-dev \
+    libgl1-mesa-dev \
+    libglu1-mesa-dev \
     libx11-dev \
     libxext-dev \
     libxrender-dev \
