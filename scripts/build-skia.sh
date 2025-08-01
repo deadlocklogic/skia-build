@@ -77,7 +77,8 @@ case "$ENV_PLATFORM" in
     PLATFORM_ARGS="skia_use_direct3d=true"
     ;;
   wasm)
-    PLATFORM_ARGS=""
+    PLATFORM_ARGS="skia_use_webp=true"
+    PLATFORM_ARGS+="skia_use_pathops=true"
     ;;
   *)
     echo "Unsupported platform: $ENV_PLATFORM"
