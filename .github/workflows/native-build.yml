@@ -11,14 +11,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [windows, linux]
+        platform: [windows, linux, wasm]
         build_type: [release, debug]
         library_type: [static, dynamic]
 
     runs-on: ${{
       matrix.platform == 'windows' && 'windows-latest' ||
       matrix.platform == 'linux' && 'ubuntu-latest' ||
-      matrix.platform == 'macos' && 'macos-latest' }}
+      matrix.platform == 'macos' && 'macos-latest' ||
+      matrix.platform == 'wasm' && 'ubuntu-latest' }}
 
     env:
       ENV_PLATFORM: ${{ matrix.platform }}
