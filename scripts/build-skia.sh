@@ -43,11 +43,11 @@ case "$ENV_PLATFORM" in
   wasm)
     SKIA_TARGET="cc=\"emcc\""
     SKIA_TARGET+=" "
-    SKIA_TARGET="extra_cflags_cc=[\"-frtti\",\"-s\",\"USE_FREETYPE=1\",\"-s\",\"USE_PTHREADS=0\"]"
+    SKIA_TARGET="extra_cflags_cc=[\"-frtti\",\"-s\",\"USE_PTHREADS=0\"]"
     SKIA_TARGET+=" "
     SKIA_TARGET+="cxx=\"em++\""
     SKIA_TARGET+=" "
-    SKIA_TARGET+="extra_cflags=[\"-Wno-error=implicit-function-declaration\",\"-s\",\"-Wno-unknown-warning-option\",\"-s\",\"USE_FREETYPE=1\",\"-s\",\"USE_PTHREADS=0\"]"
+    SKIA_TARGET+="extra_cflags=[\"-Wno-error=implicit-function-declaration\",\"-s\",\"-Wno-unknown-warning-option\",\"-s\",\"USE_PTHREADS=0\"]"
     SKIA_TARGET+=" "
     SKIA_TARGET+="target_cpu=\"wasm\""
     ;;
