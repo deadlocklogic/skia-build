@@ -27,12 +27,23 @@ jobs:
         with:
           path: artifacts/
 
+      - name: Extract inner ZIPs (built binaries)
+        run: |
+          mkdir extracted
+          # Unzip each artifact ZIP to get inner skia-*.zip files
+          for artifact_zip in artifacts/*.zip; do
+            unzip -o "$artifact_zip" -d extracted/
+          done
+
+      - name: List extracted files for debug
+        run: ls -l extracted/
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           body: Release after builds
-          files: artifacts/**/*.zip
+          files: extracted/**/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
