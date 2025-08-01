@@ -34,13 +34,19 @@ case "$ENV_PLATFORM" in
     ;;
   android)
     SKIA_TARGET="ndk=\"$ANDROID_NDK_ROOT\""
+    SKIA_TARGET+=" "
     SKIA_TARGET+="target_os=\"android\""
+    SKIA_TARGET+=" "
     SKIA_TARGET+="target_cpu=\"$ENV_ARCHITECTURE\""
+    SKIA_TARGET+=" "
     ;;
   wasm)
     SKIA_TARGET="cc=\"emcc\""
+    SKIA_TARGET+=" "
     SKIA_TARGET+="cxx=\"em++\""
+    SKIA_TARGET+=" "
     SKIA_TARGET+="target_cpu=\"wasm\""
+    SKIA_TARGET+=" "
     ;;
   *)
     echo "Unsupported platform: $ENV_PLATFORM"
@@ -72,13 +78,19 @@ fi
 case "$ENV_PLATFORM" in
   linux|android)
     PLATFORM_ARGS="skia_use_gl=false"
+    PLATFORM_ARGS+=" "
     ;;
   windows)
     PLATFORM_ARGS="skia_use_direct3d=true"
+    PLATFORM_ARGS+=" "
     ;;
   wasm)
     PLATFORM_ARGS="skia_use_webp=true"
+    PLATFORM_ARGS+=" "
     PLATFORM_ARGS+="skia_use_pathops=true"
+    PLATFORM_ARGS+=" "
+    PLATFORM_ARGS+="skia_enable_tools=false"
+    PLATFORM_ARGS+=" "
     ;;
   *)
     echo "Unsupported platform: $ENV_PLATFORM"
