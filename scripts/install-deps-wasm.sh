@@ -26,13 +26,13 @@ sudo apt-get install -y \
     unzip \
     zip
 
-# echo "Dependencies installed successfully."
+echo "Dependencies installed successfully."
 
-# echo "Installing Emscripten SDK..."
+echo "Installing Emscripten SDK..."
 
-# if [ ! -d "emsdk" ]; then
-#   git clone https://github.com/emscripten-core/emsdk.git
-# fi
+if [ ! -d "emsdk" ]; then
+  git clone https://github.com/emscripten-core/emsdk.git
+fi
 
 # cd emsdk
 # git pull
