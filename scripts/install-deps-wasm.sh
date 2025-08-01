@@ -34,8 +34,8 @@ if [ ! -d "emsdk" ]; then
   git clone https://github.com/emscripten-core/emsdk.git
 fi
 
-# cd emsdk
-# git pull
+cd emsdk
+git pull
 
 # ./emsdk install latest
 # ./emsdk activate latest
@@ -43,18 +43,18 @@ fi
 # # Source environment to current shell
 # source ./emsdk_env.sh
 
-# cd ..
+cd ..
 
-# # Now make emcc/em++ globally available for current session (already done) 
-# # and for GitHub Actions subsequent steps by exporting PATH to GITHUB_ENV
+# Now make emcc/em++ globally available for current session (already done) 
+# and for GitHub Actions subsequent steps by exporting PATH to GITHUB_ENV
 
-# echo "Adding emsdk environment to GITHUB_ENV for subsequent GitHub Actions steps..."
+echo "Adding emsdk environment to GITHUB_ENV for subsequent GitHub Actions steps..."
 
 # echo "PATH=$(pwd)/emsdk/upstream/emscripten:\$PATH" >> $GITHUB_ENV
 # echo "EMSDK=$(pwd)/emsdk" >> $GITHUB_ENV
 # echo "EMSDK_NODE=$(pwd)/emsdk/node/12.18.1_64bit/bin/node" >> $GITHUB_ENV
 # echo "EM_CONFIG=\$HOME/.emscripten" >> $GITHUB_ENV
 
-# echo "Emscripten SDK installed and emcc/em++ available globally."
+echo "Emscripten SDK installed and emcc/em++ available globally."
 
-# echo "Environment ready for Skia WASM build."
+echo "Environment ready for Skia WASM build."
