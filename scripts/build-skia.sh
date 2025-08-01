@@ -24,7 +24,7 @@ cd skia
 
 echo "Syncing Skia dependencies..."
 python3 tools/git-sync-deps
-python3 tools/install_dependencies.sh
+bash tools/install_dependencies.sh
 
 case "$ENV_PLATFORM" in
   windows)
