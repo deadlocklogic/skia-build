@@ -13,7 +13,8 @@ jobs:
       matrix:
         # platform: [windows, linux, wasm]
         platform: [wasm]
-        build_type: [release, debug]
+        # build_type: [release, debug]
+        build_type: [release]
         library_type: [static, dynamic]
 
     runs-on: ${{
