@@ -87,8 +87,8 @@ case "$ENV_PLATFORM" in
   wasm)
     PLATFORM_ARGS="skia_use_webp=true"
     PLATFORM_ARGS+=" "
-    PLATFORM_ARGS+="skia_use_pathops=true"
-    PLATFORM_ARGS+=" "
+    # PLATFORM_ARGS+="skia_use_pathops=true"
+    # PLATFORM_ARGS+=" "
     PLATFORM_ARGS+="skia_enable_tools=false"
     ;;
   *)
