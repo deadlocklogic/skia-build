@@ -97,7 +97,7 @@ case "$ENV_PLATFORM" in
     ;;
 esac
 
-echo "Generating build files in ../$ENV_BUILD_DIR..."
+echo "Generating build files in ../$ENV_BUILD_DIR...: bin/gn gen ../$ENV_BUILD_DIR --args=$SKIA_TARGET $SKIA_IS_DEBUG $SKIA_IS_COMPONENT_BULD $PLATFORM_ARGS"
 bin/gn gen ../"$ENV_BUILD_DIR" --args="$SKIA_TARGET $SKIA_IS_DEBUG $SKIA_IS_COMPONENT_BULD $PLATFORM_ARGS"
 
 echo "Starting build with ninja..."
