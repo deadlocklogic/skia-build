@@ -36,13 +36,6 @@ fi
 
 cd emsdk
 git pull
-
-./emsdk install latest
-./emsdk activate latest
-
-# Source environment to current shell
-source ./emsdk_env.sh
-
 cd ..
 
 # Now make emcc/em++ globally available for current session (already done) 
