@@ -4,6 +4,16 @@ set -euo pipefail
 # Ensure we're running from repo root
 cd "$(dirname "$0")/.."
 
+case "$ENV_PLATFORM" in
+  wasm)
+    cd emsdk
+    ./emsdk install latest
+    ./emsdk activate latest
+    source ./emsdk_env.sh
+    cd ..
+    ;;
+esac
+
 # Clone Skia repo if not present
 if [ ! -d skia ]; then
   echo "Cloning Skia repository..."
@@ -28,11 +38,6 @@ case "$ENV_PLATFORM" in
     SKIA_TARGET+="target_cpu=\"$ENV_ARCHITECTURE\""
     ;;
   wasm)
-    cd emsdk
-    ./emsdk install latest
-    ./emsdk activate latest
-    source ./emsdk_env.sh
-    cd ..
     SKIA_TARGET="cc=\"emcc\""
     SKIA_TARGET+="cxx=\"em++\""
     SKIA_TARGET+="target_cpu=\"wasm\""
