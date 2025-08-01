@@ -28,7 +28,9 @@ case "$ENV_PLATFORM" in
     SKIA_TARGET+="target_cpu=\"$ENV_ARCHITECTURE\""
     ;;
   wasm)
-    SKIA_TARGET="target_cpu=\"wasm\""
+    SKIA_TARGET="cc=\"emcc\""
+    SKIA_TARGET+="cxx=\"em++\""
+    SKIA_TARGET+="target_cpu=\"wasm\""
     ;;
   *)
     echo "Unsupported platform: $ENV_PLATFORM"
