@@ -41,7 +41,7 @@ git pull
 ./emsdk activate latest
 
 # Source environment to current shell
-# source ./emsdk_env.sh
+source ./emsdk_env.sh
 
 cd ..
 
