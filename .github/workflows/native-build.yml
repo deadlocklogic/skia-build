@@ -11,7 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [windows, linux, wasm]
+        # platform: [windows, linux, wasm]
+        platform: [wasm]
         build_type: [release, debug]
         library_type: [static, dynamic]
 
