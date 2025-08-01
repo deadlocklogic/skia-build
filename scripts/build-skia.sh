@@ -85,10 +85,10 @@ case "$ENV_PLATFORM" in
     PLATFORM_ARGS="skia_use_direct3d=true"
     ;;
   wasm)
-    PLATFORM_ARGS="skia_use_webp=true"
+    PLATFORM_ARGS="skia_use_libwebp=true"
     PLATFORM_ARGS+=" "
-    # PLATFORM_ARGS+="skia_use_pathops=true"
-    # PLATFORM_ARGS+=" "
+    PLATFORM_ARGS+="skia_use_freetype=true"
+    PLATFORM_ARGS+=" "
     PLATFORM_ARGS+="skia_enable_tools=false"
     ;;
   *)
