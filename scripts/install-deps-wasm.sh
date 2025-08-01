@@ -43,10 +43,10 @@ cd ..
 
 echo "Adding emsdk environment to GITHUB_ENV for subsequent GitHub Actions steps..."
 
-echo "PATH=$(pwd)/emsdk/upstream/emscripten:\$PATH" >> $GITHUB_ENV
-echo "EMSDK=$(pwd)/emsdk" >> $GITHUB_ENV
-echo "EMSDK_NODE=$(pwd)/emsdk/node/12.18.1_64bit/bin/node" >> $GITHUB_ENV
-echo "EM_CONFIG=\$HOME/.emscripten" >> $GITHUB_ENV
+# echo "PATH=$(pwd)/emsdk/upstream/emscripten:\$PATH" >> $GITHUB_ENV
+# echo "EMSDK=$(pwd)/emsdk" >> $GITHUB_ENV
+# echo "EMSDK_NODE=$(pwd)/emsdk/node/12.18.1_64bit/bin/node" >> $GITHUB_ENV
+# echo "EM_CONFIG=\$HOME/.emscripten" >> $GITHUB_ENV
 
 echo "Emscripten SDK installed and emcc/em++ available globally."
 
